@@ -44,33 +44,40 @@
  console.log(updated);
  ***************************************************************************/
 
-const numbers = [1, 2, 3];
+/***************************************************************************
+ const numbers = [1, 2, 3];
 
-const index = numbers.indexOf(2);
-const added = [
-    ...numbers.slice(0, index),
-    4,
-    ...numbers.slice(index)
-]
-//Added number String
-// console.log(`Number Added : ${added}`);
-//Added Number in array
-console.log(added);
+ const index = numbers.indexOf(2);
+ const added = [
+ ...numbers.slice(0, index),
+ 4,
+ ...numbers.slice(index)
+ ]
+ //Added number String
+ // console.log(`Number Added : ${added}`);
+ //Added Number in array
+ console.log(added);
 
-//Remove number
-const removed = numbers.filter(n => n !== 2);
-console.log(removed);
+ //Remove number
+ const removed = numbers.filter(n => n !== 2);
+ console.log(removed);
 
-//Update Number
-const updated = numbers.map(n => n === 2 ? 20 : n)
-console.log(updated);
-
+ //Update Number
+ const updated = numbers.map(n => n === 2 ? 20 : n)
+ console.log(updated);
+ ***************************************************************************/
+import {Map} from 'immutable';
 // Book Object Is Here
-const book = {title: 'Harry Potter'}
+// const book = {title: 'Harry Potter'}
+let book = Map({title: 'Harry Potter'})
 
 function publish() {
-    book.isPublished = true;
+    // book.isPublished = true;
+    return book.set("isPublished", true);
 }
 
-publish(book);
-console.log(book)
+book = publish(book);
+
+// console.log(book)
+// console.log(book.get('title'));
+console.log(book.toJS());
