@@ -67,17 +67,30 @@
  console.log(updated);
  ***************************************************************************/
 import {Map} from 'immutable';
+import {produce} from 'immer';
 // Book Object Is Here
 // const book = {title: 'Harry Potter'}
-let book = Map({title: 'Harry Potter'})
+let book = Map({title: 'Harry Potter'});
+let book2 = {title: 'Braking Bad'};
 
+// Immutable Here is immutable
 function publish() {
     // book.isPublished = true;
     return book.set("isPublished", true);
 }
 
+// Immer Here is immer
+function publish2(book2) {
+    return produce(book2, draftBook => {
+        draftBook.isPublished = true;
+    });
+}
+
 book = publish(book);
+let updatedBook = publish2(book2);
 
 // console.log(book)
+console.log(book2)
 // console.log(book.get('title'));
 console.log(book.toJS());
+console.log(updatedBook);
