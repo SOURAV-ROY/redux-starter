@@ -1,4 +1,5 @@
 import store from './store';
+import * as actions from './actionTypes';
 
 // state = reducer(state, action)
 // Notify the subscribers that the state has changed
@@ -12,7 +13,8 @@ store.subscribe(() => {
 // })
 
 store.dispatch({
-    type: 'bugAdded',
+    // type: 'bugAdded',
+    type: actions.BUG_ADDED,
     payload: {
         description: 'BUG 1 Added'
     }
@@ -20,7 +22,8 @@ store.dispatch({
 
 // unsubscribe();
 store.dispatch({
-    type: 'bugRemoved',
+    // type: 'bugRemoved',
+    type: actions.BUG_REMOVED,
     payload: {
         id: 1,
     }
